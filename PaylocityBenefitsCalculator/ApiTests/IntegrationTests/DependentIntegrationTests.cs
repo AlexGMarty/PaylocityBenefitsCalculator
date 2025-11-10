@@ -11,7 +11,6 @@ namespace ApiTests.IntegrationTests;
 public class DependentIntegrationTests : IntegrationTest
 {
     [Fact]
-    //task: make test pass
     public async Task WhenAskedForAllDependents_ShouldReturnAllDependents()
     {
         var response = await HttpClient.GetAsync("/api/v1/dependents");
@@ -48,13 +47,68 @@ public class DependentIntegrationTests : IntegrationTest
                 LastName = "Jordan",
                 Relationship = Relationship.DomesticPartner,
                 DateOfBirth = new DateTime(1974, 1, 2)
+            },
+            new()
+            {
+                Id = 5,
+                FirstName = "Child1",
+                LastName = "Edwards",
+                Relationship = Relationship.Child,
+                DateOfBirth = new DateTime(2020, 6, 23)
+            },
+            new()
+            {
+                Id = 6,
+                FirstName = "Child2",
+                LastName = "Edwards",
+                Relationship = Relationship.Child,
+                DateOfBirth = new DateTime(2021, 5, 18)
+            },
+            new()
+            {
+                Id = 7,
+                FirstName = "Child3",
+                LastName = "Edwards",
+                Relationship = Relationship.Child,
+                DateOfBirth = new DateTime(2022, 4, 15)
+            },
+            new()
+            {
+                Id = 8,
+                FirstName = "Child4",
+                LastName = "Edwards",
+                Relationship = Relationship.Child,
+                DateOfBirth = new DateTime(2023, 3, 10)
+            },
+            new()
+            {
+                Id = 9,
+                FirstName = "Child5",
+                LastName = "Edwards",
+                Relationship = Relationship.Child,
+                DateOfBirth = new DateTime(2024, 2, 5)
+            },
+            new()
+            {
+                Id = 10,
+                FirstName = "Child6",
+                LastName = "Edwards",
+                Relationship = Relationship.Child,
+                DateOfBirth = new DateTime(2025, 1, 1)
+            },
+            new()
+            {
+                Id = 11,
+                FirstName = "Child7",
+                LastName = "Edwards",
+                Relationship = Relationship.Child,
+                DateOfBirth = new DateTime(2025, 12, 25)
             }
         };
         await response.ShouldReturn(HttpStatusCode.OK, dependents);
     }
 
     [Fact]
-    //task: make test pass
     public async Task WhenAskedForADependent_ShouldReturnCorrectDependent()
     {
         var response = await HttpClient.GetAsync("/api/v1/dependents/1");
@@ -70,7 +124,6 @@ public class DependentIntegrationTests : IntegrationTest
     }
 
     [Fact]
-    //task: make test pass
     public async Task WhenAskedForANonexistentDependent_ShouldReturn404()
     {
         var response = await HttpClient.GetAsync($"/api/v1/dependents/{int.MinValue}");
